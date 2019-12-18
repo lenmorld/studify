@@ -261,7 +261,19 @@ gives:
 
 every Rails model can be init. with its attributes, automatically mapped to the db columns
 
+- `Lesson.new` uses the class `Lesson`
+
 - `new(params)` does just that: **init the model**
 - `save`: **save the model** in the db
 
 then, redirect to the `show()` action (we'll define later)
+
+**ERROR** ForbiddenAttributesError
+
+- Rails security feature, "strong parameters", which requries us to tell Rails exactly which params are allowed in the controller actions
+
+> this prevents extra malicious params values being "mass assigned" to the model
+
+we have to whitelist controller
+
+## Whitelisting controller
