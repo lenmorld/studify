@@ -15,6 +15,7 @@
       <td><%= lesson.title %></td>
       <td><%= lesson.text %></td>
       <td><%= link_to 'Show', lesson_path(lesson) %></td>
+      <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
     </tr>
   <% end %>
 </table>

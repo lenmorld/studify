@@ -14,6 +14,10 @@ class LessonsController < ApplicationController
         @lesson = Lesson.new
     end
 
+    def edit
+        @lesson = Lesson.find(params[:id])
+    end
+
     def create
         # inspect params
         # render plain: params[:lesson].inspect
@@ -33,6 +37,16 @@ class LessonsController < ApplicationController
             render 'new'
         end
 
+    end
+
+    def update
+        @lesson = Lesson.find(@params[:id])
+
+        if @lesson.update(lesson_params)
+            redirect_to @lesson
+        else 
+            render 'edit'
+        end
     end
 
     private
