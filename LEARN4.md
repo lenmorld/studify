@@ -17,6 +17,7 @@ The arguments to `form_with` could be:
     - Symbol scope `scope: :lesson`
       - creates fields but not filled 
 
+    - an array, used to build a nested route (CRUD.md)
 http://api.rubyonrails.org/v5.2.4.1/classes/ActionView/Helpers/FormHelper.html#method-i-form_with
 
 The `model` passed to `form_with` is a **resource**,

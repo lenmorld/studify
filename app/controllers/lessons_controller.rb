@@ -49,6 +49,13 @@ class LessonsController < ApplicationController
         end
     end
 
+    def destroy
+        @lesson = Lesson.find(params[:id])
+        @lesson.destroy
+
+        redirect_to lessons_path
+    end
+
     private
         # make "strong params" method reusable between create, update
         def lesson_params
