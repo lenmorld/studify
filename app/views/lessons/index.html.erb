@@ -16,6 +16,7 @@
       <td><%= lesson.text %></td>
       <td><%= link_to 'Show', lesson_path(lesson) %></td>
       <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
+      <td><%= lesson_path(lesson) %></td>
       <td><%= link_to 'Destroy', lesson_path(lesson),
               method: :delete,
               data: { confirm: 'Are you sure?'} %></td>

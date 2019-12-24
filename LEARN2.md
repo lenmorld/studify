@@ -1,7 +1,7 @@
 ## Create a new resource
 
 A resource is a collection of similar objects
-e.g. articles, people, animals
+e.g. lessons, people, animals
 
 You can CRUD a resource as a list or an inidividual item, aka "CRUD operations"
 

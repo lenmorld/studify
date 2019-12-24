@@ -46,7 +46,7 @@ end
 
 
 `Lesson.find(params[:lesson_id])`
-Each request for a comment has to keep track of the article to which the comment is attached (Lesson.find)
+Each request for a comment has to keep track of the lesson to which the comment is attached (Lesson.find)
 
 `@lesson.comments.create(comment_params)`
 create and save the comment. This will automatically link the comment so that it belongs to that @lesson

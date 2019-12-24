@@ -40,7 +40,7 @@ class LessonsController < ApplicationController
     end
 
     def update
-        @lesson = Lesson.find(@params[:id])
+        @lesson = Lesson.find(params[:id])
 
         if @lesson.update(lesson_params)
             redirect_to @lesson
@@ -50,7 +50,9 @@ class LessonsController < ApplicationController
     end
 
     def destroy
+        puts ">>>>> #{params}"
         @lesson = Lesson.find(params[:id])
+        puts ">>>> #{@lesson}"
         @lesson.destroy
 
         redirect_to lessons_path

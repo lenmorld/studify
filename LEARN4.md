@@ -2,9 +2,9 @@
 <%= form_with(model: @lesson, local: true) do |form| %>
 ```
 
-Passing the article object to the method
+Passing the lesson object to the method
 
-- **automagically creates URL for submitting the edited article form**
+- **automagically creates URL for submitting the edited lesson form**
 - submitted via `PATCH HTTP`
   - Patch is the HTTP method you're expected to use for updating resources, according to REST protocol
 

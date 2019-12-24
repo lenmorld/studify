@@ -1,6 +1,6 @@
 # Adding a second model
 
-`bin/rails generate model Comment commenter:string body:text article:references`
+`bin/rails generate model Comment commenter:string body:text lesson:references`
 
 ## Active Record association
 
@@ -56,7 +56,7 @@ There's two sides to the relationship
 this has already been added in 
 ```ruby
 class Comment < ApplicationRecord
-  belongs_to :article
+  belongs_to :lesson
 end
 ```
 
