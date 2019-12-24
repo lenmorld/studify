@@ -2,7 +2,7 @@
 
 ## LessonsController
 
-`http_basic_authenticate_with`
+`http_basic_authenticate_with` **before filter**
 
 Block access to CRUD actions if not authenticated
 
@@ -22,6 +22,14 @@ When Create, Update, Destroy (Read is fine for non-authenticated users):
 
 ![](screens/2019-12-24-10-02-57.png)
 
+![](screens/2019-12-24-10-14-53.png)
+
+After successful login, (i think) it actually saves the username and password as a **server session**
+such that even deleting the Browser session, it would just get it again from the server
+
+![](screens/2019-12-24-10-11-04.png)
+
+https://stackoverflow.com/questions/15662969/what-is-the-difference-between-http-basic-authenticate-with-and-authenticate-or
 
 ### Try Auth addon gems too:
 

@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
     
-    http_basic_authenticate_with name: 'lenny', password: 'abcd1234', except: [:index, :show]
+    http_basic_authenticate_with name: 'lenny1', password: 'abcd12345', except: [:index, :show]
 
     # suggested order: index, show, new, edit, create, update, destroy
 
