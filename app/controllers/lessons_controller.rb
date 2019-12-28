@@ -1,11 +1,16 @@
 class LessonsController < ApplicationController
     
-    http_basic_authenticate_with name: 'lenny1', password: 'abcd12345', except: [:index, :show]
+    # http_basic_authenticate_with name: 'lenny1', password: 'abcd12345', except: [:index, :show]
 
     # suggested order: index, show, new, edit, create, update, destroy
 
     def index
         @lessons = Lesson.all
+    end
+
+    def blah
+        @lesson = Lesson.first
+        render json: @lesson
     end
 
     def show
