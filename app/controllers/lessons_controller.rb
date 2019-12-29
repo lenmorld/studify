@@ -8,11 +8,6 @@ class LessonsController < ApplicationController
         @lessons = Lesson.all
     end
 
-    def blah
-        @lesson = Lesson.first
-        render json: @lesson
-    end
-
     def show
         @lesson = Lesson.find(params[:id])
     end
@@ -63,6 +58,20 @@ class LessonsController < ApplicationController
         @lesson.destroy
 
         redirect_to lessons_path
+    end
+
+    def blah
+        @lesson = Lesson.first
+        render json: @lesson
+    end
+
+    def route_test
+        render json: {
+            lessons_path: lessons_path,
+            lessons_url: lessons_url,
+            edit_lesson_path: edit_lesson_path(3), # /lessons/3/edit
+            lesson_path: lesson_path(3) # /lessons/3
+        }
     end
 
     private
