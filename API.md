@@ -27,3 +27,11 @@ respond_to do |format|
 
  end
 ```
+
+```bash
+curl -X DELETE http://localhost:3000/cards/4 
+
+curl -X PUT -H "Content-type: application/json" -d '{"question": "Ruby is a dynamic language. T or F?", "answer": "F"}' http://localhost:3000/cards/3
+
+curl -X POST -H "Content-type: application/json" -d '{"question": "Ruby is a dynamic language. T or F?", "answer": "T"}' http://localhost:3000/cards
+```
