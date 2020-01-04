@@ -1,33 +1,3 @@
-<<<<<<< HEAD
-# React boilerplate with webpack dev server
-
-## Dev
-
-```
-$ npm install
-$ npm run dev
-```
-
-> `webpack-dev-server` runs on 4001 with  hot-reloading
-
-## Deploy
-
-```
-$ npm install
-$ npm run build
-```
-
-> builds `bundle.js`
-
-## Components
-
-- webpack 4
-- babel 7 with react preset
-
-## Nice-to-haves
-
-- [Cheap source maps](https://lennythedev.com/webpack/prettify_devtools/)
-=======
 # Studify
 
 a Rails app for studying
@@ -52,6 +22,13 @@ $ bin/rails db:seed
 $ bin/rails server
 ```
 
+## Start UI server (webpack-dev-server)
+
+```bash
+$ npm run install # do this once
+$ npm run dev
+```
+
 # API v1
 
 ## Cards
@@ -72,6 +49,19 @@ Fields in db/payload:
 | PUT | `/cards/:id` | payload above | Updates an exisiting card specified by id, with given payload |
 | DELETE | `/cards/:id` | - | Delete an existing card specified by id |
 
+# UI V1
+
+- Webpack 4 with dev server for hot-reloading
+- Babel 7 with react presets
+
+Rails views and layouts can include React app directly
+as long as it is mounted in a div that exists in the `.erb`
+and a webpack entry in `webpack.config.js` covers the `jsx`
+
+### Current webpack setup
+
+- source:  `public/javascript/index.js` as the entry
+- output: `dist/bundle.js`
 
 # Rails info
 
@@ -94,4 +84,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
->>>>>>> eb4950f6635e3e0d3f18c41f3ba597779ccc5a98
