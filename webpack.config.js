@@ -9,8 +9,8 @@ module.exports = {
 	// entry: "./app/index.jsx",
 	entry: `${es6SourcePath}/index.jsx`,
 	output: {
-        // path: path.join(__dirname, "public"),
-        path: outputPath,
+		// path: path.join(__dirname, "public"),
+		path: outputPath,
 		filename: "bundle.js"
 	},
 	devtool: 'cheap-module-eval-source-map',
@@ -23,27 +23,17 @@ module.exports = {
 				test: /\.jsx?$/,
 				loader: "babel-loader",
 				exclude: /node_modules/,
-<<<<<<< HEAD
-				include: path.join(__dirname, "app"),
-=======
 				// include: path.join(__dirname, "app"),
 				include: es6SourcePath,
->>>>>>> 747b2afb7138d8538ee57da6305255661bec3eab
 				options: {
 					presets: ["@babel/react"]
 				}
 			},
 		]
-<<<<<<< HEAD
-	},
-	devServer: {
-		contentBase: "./public",
-=======
     },
 	devServer: {
 		// contentBase: "./public",
 		contentBase: outputPath,
->>>>>>> 747b2afb7138d8538ee57da6305255661bec3eab
 		port: 4001,
 		// compress: true,
 	}
