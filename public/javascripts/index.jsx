@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
+import Header from './Header';
+import Questions from './Questions';
+
 const styles = {
-	margin: '1rem',
-};
+	width: '90%',
+	margin: 'auto'
+}
 
 class App extends Component {
 	render() {
-		return <div style={styles}>React: Hello World!</div>;
+		return <div style={styles}>
+			<Header />
+			<hr />
+			<Questions />
+		</div>;
 	}
 }
 
