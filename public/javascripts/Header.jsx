@@ -3,8 +3,17 @@ import ReactDOM from "react-dom";
 
 const Header = () => {
   return (
-    <div>
+    <div
+      style={{
+        padding: "0.25rem 1rem",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
+      }}
+    >
       <h1>Studify</h1>
+      <nav>Categories</nav>
     </div>
   );
 };
