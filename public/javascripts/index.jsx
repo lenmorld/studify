@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-// import { Container } from "@material-ui/core";
-
 import Header from "./Header";
 import Questions from "./Questions";
-
-// const styles = {
-// 	width: '90%',
-// 	margin: 'auto'
-// }
-
-// <Container maxWidth="lg">
 
 class App extends Component {
   render() {
