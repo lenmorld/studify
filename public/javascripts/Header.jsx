@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-const Header = () => {
+import { Button } from "@material-ui/core";
+
+const Header = ({ renderQuestionForm }) => {
   return (
     <div
       style={{
@@ -14,7 +16,20 @@ const Header = () => {
       }}
     >
       <h1>Studify</h1>
-      <nav>Categories</nav>
+      <nav>
+        <ul>
+          <li>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={renderQuestionForm}
+            >
+              + New
+            </Button>
+          </li>
+          <li>Categories</li>
+        </ul>
+      </nav>
     </div>
   );
 };

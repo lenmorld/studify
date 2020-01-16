@@ -6,6 +6,7 @@
   "main": "server.js",
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-react": "^7.7.4",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
@@ -30,5 +31,10 @@
     "axios": "^0.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   }
 }
