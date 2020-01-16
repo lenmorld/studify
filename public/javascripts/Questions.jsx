@@ -37,23 +37,40 @@ const Questions = ({}) => {
   return (
     <div
       style={{
-        height: "80%",
+        flex: 1,
         // border: "1px solid gray",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        alignItems: "center"
+        alignItems: "center",
+
+        // padding: "1rem",
+        margin: "1rem",
+
+        border: "1px solid gray"
       }}
     >
       <Question key={currentQuestion.id} question={currentQuestion} />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={nextQuestion}
-        style={{ fontSize: "1.5rem", padding: "1rem 2rem" }}
+
+      <div
+        style={{
+          flexBasis: "20%",
+
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
       >
-        Next
-      </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={nextQuestion}
+          style={{ fontSize: "1.5rem", padding: "1rem 2rem" }}
+        >
+          Next
+        </Button>
+      </div>
     </div>
   );
 };

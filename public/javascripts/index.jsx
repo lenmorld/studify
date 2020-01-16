@@ -7,11 +7,10 @@ import Questions from "./Questions";
 class App extends Component {
   render() {
     return (
-      <div style={{ height: "95vh", fontSize: "16px" }}>
+      <>
         <Header />
-        <hr />
         <Questions />
-      </div>
+      </>
     );
   }
 }
