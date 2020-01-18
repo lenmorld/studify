@@ -8,7 +8,8 @@ import QuestionForm from "./QuestionForm";
 
 class App extends Component {
   state = {
-    showModal: false
+    // showModal: false
+    showModal: true //TEST
   };
 
   // TODO move in context, or in global
@@ -19,14 +20,20 @@ class App extends Component {
     });
   };
 
-  // {this.state.showModal ? <Modal component={QuestionForm} /> : null}
+  hideModal = event => {
+    console.log("HIDE!");
+    // debugger;
+    // this.setState({ showModal: false });
+  };
+
+  // TODO: make Modal an HoC
 
   render() {
     return (
       <>
         {this.state.showModal ? (
-          <Modal>
-            <div>haha</div>
+          <Modal onHide={this.hideModal}>
+            <QuestionForm />
           </Modal>
         ) : null}
         <Header renderQuestionForm={this.renderQuestionForm} />
