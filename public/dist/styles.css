@@ -18,6 +18,11 @@ body {
   box-sizing: border-box;
 }
 
+h2 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
 #app {
   height: 100%;
   width: 100%;

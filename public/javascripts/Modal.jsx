@@ -39,6 +39,7 @@ const styles = {
   },
 
   container: {
+    backgroundColor: "white", // cancel out the backdrop transparency
     position: "absolute",
     top: "12%", // 100-75% = 25/2
     left: "12%",
@@ -52,8 +53,12 @@ const styles = {
     // flexBasis: "50%",
 
     border: "1px solid gray",
-    height: "100%",
-    width: "100%"
+    // height: "100%",
+    // width: "100%"
+    flex: 1, // consume free space on the main axis, instead of 100%
+
+    display: "flex",
+    flexDirection: "column"
   }
 };
 

@@ -3,15 +3,22 @@ import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 
 import MarkdownTextArea from "./MarkdownTextArea";
+import Spacer from "./Spacer";
 
 const styles = {
-  height: "100%",
-  padding: "1rem",
+  container: {
+    height: "100%",
+    padding: "1rem",
 
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "stretch",
-  justifyContent: "space-between"
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "stretch",
+    justifyContent: "space-between"
+  },
+
+  fieldRow: {
+    flex: 1
+  }
 };
 
 const QuestionForm = () => {
@@ -19,26 +26,25 @@ const QuestionForm = () => {
   const [answer, setAnswer] = useState();
 
   return (
-    <div style={styles}>
+    <div style={styles.container}>
       <h2>Question</h2>
       {/* TODO: make this a <Field/> */}
-      <div style={{ flex: 1 }}>
-        <div style={{ height: "100%", width: "100%" }}>
-          <MarkdownTextArea autofocus={true} placeholder="Question">
-            {question}
-          </MarkdownTextArea>
-        </div>
+      <div style={styles.fieldRow}>
+        <MarkdownTextArea
+          autoFocus={true}
+          placeholder="Question"
+          text="What is blah?"
+        />
       </div>
+
+      <Spacer />
 
       <h2>Answer</h2>
-      <div style={{ flex: 1 }}>
-        <div style={{ height: "100%", width: "100%" }}>
-          <MarkdownTextArea placeholder="Answer">{answer}</MarkdownTextArea>
-        </div>
+      <div style={styles.fieldRow}>
+        <MarkdownTextArea autoFocus={true} placeholder="Answer" />
       </div>
 
-      {/* TODO: <Spacer /> */}
-      <div style={{ margin: "0.5rem" }}></div>
+      <Spacer />
       <Button variant="contained" color="primary">
         Submit
       </Button>
