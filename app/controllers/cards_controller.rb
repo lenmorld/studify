@@ -1,55 +1,54 @@
+# frozen_string_literal: true
+
 class CardsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
-    skip_before_action :verify_authenticity_token
+  def index
+    @cards = Card.all
+    render json: @cards
+  end
 
-    def index
-        @cards = Card.all
-        render json: @cards
+  # TODO: show, new, edit for Admin page
+
+  def create
+    puts ">>>> CREATE: #{params}"
+
+    @card = Card.new(card_params)
+
+    if @card.save
+      updated_cards
+    else
+      render json: { error: 'Create error' }
     end
+  end
 
-    # TODO: show, new, edit for Admin page
+  def update
+    puts ">>>> UPDATE: #{params}"
 
-    def create
-        puts ">>>> CREATE: #{params}"
+    @card = Card.find(params[:id])
 
-        @card = Card.new(card_params)
-
-        if @card.save
-            updated_cards
-        else
-            render json: { error: "Create error" }
-        end
+    if @card.update(card_params)
+      updated_cards
+    else
+      render json: { error: 'Update error' }
     end
+  end
 
-    def update
-        puts ">>>> UPDATE: #{params}"
+  def destroy
+    puts ">>>> DESTROY: #{params}"
 
-        @card = Card.find(params[:id])
+    @card = Card.find(params[:id])
+    @card.destroy
+  end
 
-        if @card.update(card_params)
-            updated_cards
-        else
-            render json: { error: "Update error" }
-        end
-    end
+  private
 
-    def destroy
-        puts ">>>> DESTROY: #{params}"
+  def card_params
+    params.require(:card).permit(:question, :answer)
+  end
 
-        @card = Card.find(params[:id])
-        @card.destroy
-    end
-
-    private
-
-        def card_params
-            params.require(:card).permit(:question, :answer)
-        end
-
-        def updated_cards
-            @cards = Card.all
-            render json: @cards
-        end
-        
-
+  def updated_cards
+    @cards = Card.all
+    render json: @cards
+  end
 end
