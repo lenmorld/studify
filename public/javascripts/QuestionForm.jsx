@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 
 import MarkdownTextArea from "./MarkdownTextArea";
 import Spacer from "./Spacer";
+import TagInput from "./TagInput";
 
 const styles = {
   container: {
@@ -27,6 +28,11 @@ const QuestionForm = () => {
 
   return (
     <div style={styles.container}>
+      <h2>Category</h2>
+
+      {/* TODO set defaultValue from DB */}
+      <TagInput defaultValue={null} />
+
       <h2>Question</h2>
       {/* TODO: make this a <Field/> */}
       <div style={styles.fieldRow}>
