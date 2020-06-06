@@ -20,17 +20,24 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
-				loader: "babel-loader",
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				// include: path.join(__dirname, "app"),
-				include: es6SourcePath,
-				options: {
-					presets: ["@babel/react"]
-				}
-			},
+				use: ['babel-loader']
+			}
 		]
-    },
+		// rules: [
+		// 	{
+		// 		test: /\.jsx?$/,
+		// 		loader: "babel-loader",
+		// 		exclude: /node_modules/,
+		// 		// include: path.join(__dirname, "app"),
+		// 		include: es6SourcePath,
+		// 		options: {
+		// 			presets: ["@babel/react"]
+		// 		}
+		// 	},
+		// ]
+	},
 	devServer: {
 		// contentBase: "./public",
 		contentBase: outputPath,
