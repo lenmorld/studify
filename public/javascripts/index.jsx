@@ -2,14 +2,23 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
 import Header from "./Header";
-import Questions from "./Questions";
+import QuestionIterator from "./QuestionIterator";
 import Modal from "./Modal";
-import QuestionForm from "./QuestionForm";
+import FlashCardForm from "./FlashCardForm";
+
+const styles = {
+	mainContainer: {
+		display: 'flex',
+		flexDirection: 'column',
+		height: '100%',
+		backgroundColor: 'lightgray'
+	}
+}
 
 class App extends Component {
 	state = {
-		// showModal: false
-		showModal: true //TEST
+		showModal: false
+		// showModal: true //TEST
 	};
 
 	// TODO move in context, or in global
@@ -23,21 +32,21 @@ class App extends Component {
 	hideModal = event => {
 		console.log("HIDE!");
 		// debugger;
-		// this.setState({ showModal: false });
+		this.setState({ showModal: false });
 	};
 
 	// TODO: make Modal an HoC
 
 	render() {
 		return (
-			<div>
+			<div style={styles.mainContainer}>
 				{this.state.showModal ? (
 					<Modal onHide={this.hideModal}>
-						<QuestionForm />
+						<FlashCardForm />
 					</Modal>
 				) : null}
 				<Header renderQuestionForm={this.renderQuestionForm} />
-				<Questions />
+				<QuestionIterator />
 			</div>
 		);
 	}

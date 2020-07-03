@@ -66,14 +66,19 @@ const styles = {
  * Go to EDIT mode, and set button to Disabled until text is given
  */
 
-const MarkdownTextArea = ({ text, readOnly, ...props }) => {
+const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
   const [editMode, toggleEditMode] = useState(!!text);
   const [markdown, setMarkdown] = useState(text || "");
 
   // TODO: remove onChange and read from button click instead
   const onChangeMdText = event => {
     const mdString = event.target.value;
-    setMarkdown(mdString || "");
+    const value = mdString || "";
+    console.log("EDIT...", value)
+    setMarkdown(value);
+
+    // change state on parent via function prop
+    onMdChange(value)
   };
 
   return (
@@ -82,14 +87,14 @@ const MarkdownTextArea = ({ text, readOnly, ...props }) => {
         {editMode ? (
           <div dangerouslySetInnerHTML={{ __html: md.render(markdown) }}></div>
         ) : (
-          <textarea
-            {...defaultProps}
-            {...props}
-            style={styles.textarea}
-            defaultValue={markdown}
-            onChange={onChangeMdText}
-          ></textarea>
-        )}
+            <textarea
+              {...defaultProps}
+              {...props}
+              style={styles.textarea}
+              defaultValue={markdown}
+              onChange={onChangeMdText}
+            ></textarea>
+          )}
       </div>
 
       <Spacer />
@@ -100,7 +105,7 @@ const MarkdownTextArea = ({ text, readOnly, ...props }) => {
         onClick={() => toggleEditMode(!editMode)}
         style={styles.button}
       >
-        {editMode ? "Edit" : "Preview"}
+        {editMode ? "Edit Markdown" : "Preview"}
       </Button>
     </div>
   );

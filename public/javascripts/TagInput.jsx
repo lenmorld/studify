@@ -42,7 +42,7 @@ const Tag = ({ name, code, selectTag }) => {
     selectTag(clicked);
   };
 
-  debugger;
+  // debugger;
   return (
     <div>
       <button onClick={onClick} id={code}>

@@ -18,7 +18,8 @@
   },
   "scripts": {
     "build": "webpack --progress --profile --colors --mode production",
-    "dev": "webpack-dev-server --hot --inline --mode development"
+    "dev": "webpack-dev-server --hot --inline --mode development",
+    "ui": "parcel public/parcel/index.html --port 5000"
   },
   "keywords": [
     "react",
