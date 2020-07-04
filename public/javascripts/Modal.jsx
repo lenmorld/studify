@@ -45,7 +45,7 @@ const styles = {
     left: "12%",
     display: "flex",
 
-    height: "75%",
+    minHeight: "75%",
     width: "75%"
   },
 
