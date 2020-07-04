@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import markdownit from "markdown-it";
 
 import { Button } from "@material-ui/core";
 
 import Spacer from "./Spacer";
 
-const md = new markdownit();
+import md from './utils/markdown'
 
 // TODO: auto size based on view port
 // TODO: preview
@@ -37,8 +36,9 @@ const styles = {
     // height: "100%",
     // width: "100%"
     // flex: 1 // let md take entire space
-    flexBasis: "80%" // leave a bit of space for space-between with button to work
+    flexBasis: "80%", // leave a bit of space for space-between with button to work
     // but for mobile we still need the <Spacer />
+    fontSize: "0.75rem",
   },
   textarea: {
     // height: "inherit", // it would follow container div
@@ -46,7 +46,7 @@ const styles = {
     height: "100%", // fill up the flex: 1 parent
     width: "100%",
 
-    fontSize: "1rem",
+    fontSize: "0.75rem",
     border: "1px solid gray",
     borderRadius: "5px",
     padding: "0.5rem" // internal padding
@@ -101,7 +101,7 @@ const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
 
       <Button
         variant="contained"
-        color="primary"
+        color="default"
         onClick={() => toggleEditMode(!editMode)}
         style={styles.button}
       >

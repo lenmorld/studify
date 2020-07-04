@@ -18,7 +18,7 @@ const styles = {
     // padding: "1rem",
     margin: "1rem",
 
-    border: "1px solid gray"
+    // border: "1px solid gray"
   },
   // TOP HALF
   questionContainer: {
@@ -27,12 +27,13 @@ const styles = {
 
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     // height: "100%",
     // width: "100%",
-    borderBottom: "1px solid gray",
+    border: "1px solid gray",
     textAlign: "center",
+    padding: "1rem",
   },
 
   // BOTTOM HALF
@@ -46,9 +47,13 @@ const styles = {
     justifyContent: "center"
   },
   nextButton: {
-    fontSize: "1.5rem",
+    fontSize: "1.25rem",
     padding: "1rem 2rem"
-  }
+  },
+  revealButton: {
+    fontSize: "1.25rem",
+    padding: "1rem 2rem"
+  },
 }
 
 const getNext = (current, max) => {
@@ -61,6 +66,8 @@ const QuestionIterator = ({ }) => {
   // TODO: cache, lazy-loading, pagination
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [answerVisible, toggleAnswerVisible] = useState(false);
 
   useEffect(() => {
     api.doRequest('/cards').then(res => {
@@ -76,6 +83,7 @@ const QuestionIterator = ({ }) => {
 
   const nextQuestion = () => {
     setCurrentIndex(getNext(currentIndex, questions.length - 1));
+    toggleAnswerVisible()
   };
 
   const currentCard = questions[currentIndex];
@@ -85,20 +93,35 @@ const QuestionIterator = ({ }) => {
       style={styles.questionsContainer}
     >
       <div style={styles.questionContainer}>
-        <FlashCard key={currentCard.id} card={currentCard} />
+        <FlashCard key={currentCard.id} card={currentCard} answerVisible={answerVisible} toggleAnswerVisible={toggleAnswerVisible} />
       </div>
+      {/* TODO: combine two buttons with different states */}
       <div
         style={styles.buttonContainer}
       >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={nextQuestion}
-          style={styles.nextButton}
-        >
-          Next
+        {
+          !answerVisible && <Button
+            variant="contained"
+            color="secondary"
+            onClick={toggleAnswerVisible}
+            style={styles.revealButton}
+          >
+            Reveal
+      </Button>
+        }
+        {
+          answerVisible &&
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={nextQuestion}
+            style={styles.nextButton}
+          >
+            Next
         </Button>
+        }
       </div>
+
     </div>
   );
 };

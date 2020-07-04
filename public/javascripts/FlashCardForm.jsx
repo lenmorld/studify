@@ -24,8 +24,8 @@ const styles = {
   }
 };
 
-const FlashCardForm = () => {
-  const [question, setQuestion] = useState();
+const FlashCardForm = ({ onHide }) => {
+  const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState();
 
   const submitCard = () => {
@@ -36,18 +36,20 @@ const FlashCardForm = () => {
     console.log("req", newCard)
     api.doRequest('/cards', 'POST', newCard).then(res => {
       console.log(res)
-      debugger;
+      // debugger;
       // TODO: update parent state on QuestionIterator
+      onHide()
     });
   }
 
   return (
     <div style={styles.container}>
-      <h2>Category</h2>
       {/* TODO set defaultValue from DB */}
-      <TagInput defaultValue={null} />
 
-      <Spacer />
+      {/* AFTER MVP */}
+      {/* <h2>Category</h2> */}
+      {/* <TagInput defaultValue={null} /> */}
+      {/* <Spacer /> */}
 
       <h2>Question</h2>
       {/* TODO: make this a <Field/> */}
@@ -55,7 +57,7 @@ const FlashCardForm = () => {
         <MarkdownTextArea
           autoFocus={true}
           placeholder="Question"
-          text="What is blah?"
+          text={question}
           onMdChange={setQuestion}
         />
       </div>
@@ -64,7 +66,7 @@ const FlashCardForm = () => {
 
       <h2>Answer</h2>
       <div style={styles.fieldRow}>
-        <MarkdownTextArea autoFocus={true} placeholder="Answer" onMdChange={setAnswer} />
+        <MarkdownTextArea placeholder="Answer" onMdChange={setAnswer} />
       </div>
 
       <Spacer />

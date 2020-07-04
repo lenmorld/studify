@@ -11,7 +11,7 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'column',
 		height: '100%',
-		backgroundColor: 'lightgray'
+		// backgroundColor: 'lightgray'
 	}
 }
 
@@ -23,7 +23,6 @@ class App extends Component {
 
 	// TODO move in context, or in global
 	renderQuestionForm = () => {
-		console.log("wa");
 		this.setState({
 			showModal: true
 		});
@@ -42,11 +41,14 @@ class App extends Component {
 			<div style={styles.mainContainer}>
 				{this.state.showModal ? (
 					<Modal onHide={this.hideModal}>
-						<FlashCardForm />
+						<FlashCardForm onHide={this.hideModal} />
 					</Modal>
 				) : null}
 				<Header renderQuestionForm={this.renderQuestionForm} />
 				<QuestionIterator />
+				<footer style={{ padding: '1rem', textAlign: 'center' }}>
+					<span style={{ fontSize: '0.75rem' }}>Questions from <a href="https://github.com/yangshun/front-end-interview-handbook" target="_blank" rel="noopener" rel="noreferrer">Github: Front-end Interview Handbook</a></span>
+				</footer>
 			</div>
 		);
 	}

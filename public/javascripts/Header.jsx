@@ -10,7 +10,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottom: "2px solid gray"
+    // borderBottom: "2px solid gray"
   }
 }
 
@@ -31,7 +31,7 @@ const Header = ({ renderQuestionForm }) => {
               + New
             </Button>
           </li>
-          <li>Categories</li>
+          {/* <li>Categories</li> */}
         </ul>
       </nav>
     </div>

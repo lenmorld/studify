@@ -1,36 +1,27 @@
 import React, { useState } from "react";
 
-import { Button } from "@material-ui/core";
+import markdown from './utils/markdown'
 
 const styles = {
   question: {
-    fontSize: "1.5rem"
-  },
-  revealButton: {
-    fontSize: "1.5rem",
-    padding: "1rem 2rem"
+    fontSize: "1rem"
   },
   answer: {
-    fontSize: "1.5rem"
+    fontSize: "1rem"
   }
 }
 
-const FlashCard = ({ card }) => {
+const FlashCard = ({ card, answerVisible, toggleAnswerVisible }) => {
   // const classes = useStyles();
-  const [answerVisible, toggleAnswerVisible] = useState(false);
-
   return (
     <React.Fragment>
-      <div style={styles.question}>{card.question}</div>
-      <Button
-        variant="contained"
-        color="secondary"
-        onClick={toggleAnswerVisible}
-        style={styles.revealButton}
-      >
-        Reveal
-      </Button>
-      <div style={styles.answer}>{answerVisible && card.answer}</div>
+      <div style={styles.question} dangerouslySetInnerHTML={{ __html: markdown.render(card.question) }}>
+      </div>
+      {
+        answerVisible &&
+        <div style={styles.answer} dangerouslySetInnerHTML={{ __html: markdown.render(card.answer) }}></div>
+      }
+
     </React.Fragment>
   );
 };
