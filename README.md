@@ -22,11 +22,20 @@ $ bin/rails db:seed
 $ bin/rails server
 ```
 
-## Start UI server (webpack-dev-server)
+# UI
+
+## Start UI server
 
 ```bash
-$ npm run install # do this once
-$ npm run dev
+$ npm install # do this once
+$ npm run ui # starts hot-reload dev on localhost:5000
+```
+
+## Deploy UI
+
+```bash
+$ npm run build # output at dist/
+$ npm run deploy # deploys to studify.surge.sh
 ```
 
 # API v1
