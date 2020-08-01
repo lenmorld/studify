@@ -82,8 +82,8 @@ const QuestionIterator = ({ }) => {
       console.log("questions from API", res.data)
 
       let questions = res.data;
-      // debugging END-OF-SET
-      questions = [questions[0]]
+      // debugging Summary
+      // questions = [questions[0]]
 
       // randomize order
       const randomizedSet = randomizer(questions)
