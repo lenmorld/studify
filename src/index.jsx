@@ -5,6 +5,7 @@ import Header from "./Header";
 import QuestionIterator from "./QuestionIterator";
 import Modal from "./Modal";
 import FlashCardForm from "./FlashCardForm";
+import Container from './Container'
 
 const styles = {
 	mainContainer: {
@@ -45,7 +46,9 @@ class App extends Component {
 					</Modal>
 				) : null}
 				<Header renderQuestionForm={this.renderQuestionForm} />
-				<QuestionIterator />
+				<Container>
+					<QuestionIterator />
+				</Container>
 				<footer style={{ padding: '1rem', textAlign: 'center' }}>
 					<span style={{ fontSize: '0.75rem' }}>Questions from <a href="https://github.com/yangshun/front-end-interview-handbook" target="_blank" rel="noopener" rel="noreferrer">Github: Front-end Interview Handbook</a></span>
 				</footer>
