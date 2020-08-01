@@ -1,25 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-import { Button } from "@material-ui/core";
-
+import Button from '../src/components/Button'
 import FlashCard from "./FlashCard";
+import Summary from './Summary';
 
 import api from './utils/api'
+import randomizer from './utils/randomizer'
 
 const styles = {
-  questionsContainer: {
-    flex: 1,
-    // border: "1px solid gray",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-
-    // padding: "1rem",
-    margin: "1rem",
-
-    // border: "1px solid gray"
-  },
   // TOP HALF
   questionContainer: {
     flexBasis: "80%",
@@ -46,20 +34,40 @@ const styles = {
     alignItems: "center",
     justifyContent: "center"
   },
-  nextButton: {
-    fontSize: "1.25rem",
-    padding: "1rem 2rem"
-  },
-  revealButton: {
-    fontSize: "1.25rem",
-    padding: "1rem 2rem"
-  },
+  button: {
+    fontSize: "1rem",
+    padding: "0.5rem 1rem",
+    marginTop: "1rem"
+  }
 }
 
-const getNext = (current, max) => {
-  // TODO: smart random
+/**
+ * 
+ * TODO: navigation logic
+ * 1. next gets Random
+ * 2. if visited, don't visit again
+ * 
+ * e.g.
+ * 
+ * [0, 1, 2, 3, 4, 5]
+ * 
+ * something like
+ * 3 -> 0 -> 5 -> 1 -> 2 -> 4
+ * 
+ * no number should repeat in a "round"
+ */
+
+function getNext(current, max) {
   let nextIndex = current + 1;
-  return nextIndex > max ? 0 : nextIndex;
+
+  if (nextIndex > max) {
+    // return 0
+    // signify end of list
+    return -1;
+  } else {
+    return nextIndex;
+  }
+  // return nextIndex > max ? 0 : nextIndex;
 };
 
 const QuestionIterator = ({ }) => {
@@ -71,14 +79,26 @@ const QuestionIterator = ({ }) => {
 
   useEffect(() => {
     api.doRequest('/cards').then(res => {
-      // debugger;
-      setQuestions(res.data);
+      console.log("questions from API", res.data)
+
+      let questions = res.data;
+      // debugging END-OF-SET
+      questions = [questions[0]]
+
+      // randomize order
+      const randomizedSet = randomizer(questions)
+      setQuestions(randomizedSet);
     });
   }, []);
   // NOTE: dont forget [] or it is an infinite fetch!
 
   if (!questions.length) {
     return <div>Loading...</div>;
+  }
+
+  // end of list
+  if (currentIndex === -1) {
+    return <Summary />
   }
 
   const nextQuestion = () => {
@@ -89,9 +109,7 @@ const QuestionIterator = ({ }) => {
   const currentCard = questions[currentIndex];
 
   return (
-    <div
-      style={styles.questionsContainer}
-    >
+    <React.Fragment>
       <div style={styles.questionContainer}>
         <FlashCard key={currentCard.id} card={currentCard} answerVisible={answerVisible} toggleAnswerVisible={toggleAnswerVisible} />
       </div>
@@ -101,10 +119,9 @@ const QuestionIterator = ({ }) => {
       >
         {
           !answerVisible && <Button
-            variant="contained"
-            color="secondary"
+            type="secondary"
             onClick={toggleAnswerVisible}
-            style={styles.revealButton}
+            style={styles.button}
           >
             Reveal
       </Button>
@@ -112,17 +129,15 @@ const QuestionIterator = ({ }) => {
         {
           answerVisible &&
           <Button
-            variant="contained"
-            color="primary"
+            type="primary"
             onClick={nextQuestion}
-            style={styles.nextButton}
+            style={styles.button}
           >
             Next
         </Button>
         }
       </div>
-
-    </div>
+    </React.Fragment>
   );
 };
 
