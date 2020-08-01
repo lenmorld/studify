@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
+import Button from '../src/components/Button'
 
 import Spacer from "./Spacer";
 
@@ -52,7 +53,7 @@ const styles = {
     padding: "0.5rem" // internal padding
   },
   button: {
-    alignSelf: "flex-start" // override stretch in the flex box
+    alignSelf: "flex-start", // override stretch in the flex box
     // backgroundColor: "#1976d2",
     // color: "white"
   }
@@ -100,8 +101,7 @@ const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
       <Spacer />
 
       <Button
-        variant="contained"
-        color="default"
+        type="default"
         onClick={() => toggleEditMode(!editMode)}
         style={styles.button}
       >
