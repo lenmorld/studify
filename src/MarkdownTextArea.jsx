@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // import { Button } from "@material-ui/core";
 import Button from '../src/components/Button'
 
+import { Input } from 'antd';
+const { TextArea } = Input;
+
 import Spacer from "./Spacer";
 
 import md from './utils/markdown'
@@ -47,12 +50,16 @@ const styles = {
     height: "100%", // fill up the flex: 1 parent
     width: "100%",
 
-    fontSize: "0.75rem",
-    border: "1px solid gray",
-    borderRadius: "5px",
-    padding: "0.5rem" // internal padding
+    fontSize: "0.65rem",
+    lineHeight: "1.33",
+    padding: "0.25rem",
+
+    // border: "1px solid gray",
+    // borderRadius: "5px",
+    // padding: "0.5rem" // internal padding
   },
   button: {
+    fontSize: '0.75rem',
     alignSelf: "flex-start", // override stretch in the flex box
     // backgroundColor: "#1976d2",
     // color: "white"
@@ -67,7 +74,7 @@ const styles = {
  * Go to EDIT mode, and set button to Disabled until text is given
  */
 
-const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
+const MarkdownTextArea = ({ text, readOnly, onMdChange, autoFocus, placeholder }) => {
   const [editMode, toggleEditMode] = useState(!!text);
   const [markdown, setMarkdown] = useState(text || "");
 
@@ -82,19 +89,29 @@ const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
     onMdChange(value)
   };
 
+  debugger;
+
   return (
     <div style={styles.mainContainer}>
       <div style={styles.mdContainer}>
         {editMode ? (
           <div dangerouslySetInnerHTML={{ __html: md.render(markdown) }}></div>
         ) : (
-            <textarea
-              {...defaultProps}
-              {...props}
-              style={styles.textarea}
+            <TextArea
+              placeholder={placeholder}
+              autoFocus={autoFocus}
               defaultValue={markdown}
               onChange={onChangeMdText}
-            ></textarea>
+              size="small"
+              style={styles.textarea}
+            />
+            // <textarea
+            //   {...defaultProps}
+            //   {...props}
+            //   style={styles.textarea}
+            //   defaultValue={markdown}
+            //   onChange={onChangeMdText}
+            // ></textarea>
           )}
       </div>
 
@@ -102,6 +119,7 @@ const MarkdownTextArea = ({ text, readOnly, onMdChange, ...props }) => {
 
       <Button
         type="default"
+        size='small'
         onClick={() => toggleEditMode(!editMode)}
         style={styles.button}
       >
