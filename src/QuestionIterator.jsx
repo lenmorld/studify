@@ -35,8 +35,8 @@ const styles = {
     justifyContent: "center"
   },
   button: {
-    fontSize: "1rem",
-    padding: "0.5rem 1rem",
+    // fontSize: "1rem",
+    // padding: "0.5rem 1rem",
     marginTop: "1rem"
   }
 }
@@ -83,7 +83,7 @@ const QuestionIterator = ({ }) => {
 
       let questions = res.data;
       // debugging Summary
-      // questions = [questions[0]]
+      questions = [questions[0]]
 
       // randomize order
       const randomizedSet = randomizer(questions)
@@ -119,8 +119,9 @@ const QuestionIterator = ({ }) => {
       >
         {
           !answerVisible && <Button
-            type="secondary"
+            type="primary"
             onClick={toggleAnswerVisible}
+            size="large"
             style={styles.button}
           >
             Reveal

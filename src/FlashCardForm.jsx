@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
+import Button from '../src/components/Button'
 
 import MarkdownTextArea from "./MarkdownTextArea";
 import Spacer from "./Spacer";
@@ -51,7 +52,7 @@ const FlashCardForm = ({ onHide }) => {
       {/* <TagInput defaultValue={null} /> */}
       {/* <Spacer /> */}
 
-      <h2>Question</h2>
+      <h3>Question</h3>
       {/* TODO: make this a <Field/> */}
       <div style={styles.fieldRow}>
         <MarkdownTextArea
@@ -64,13 +65,13 @@ const FlashCardForm = ({ onHide }) => {
 
       <Spacer />
 
-      <h2>Answer</h2>
+      <h3>Answer</h3>
       <div style={styles.fieldRow}>
         <MarkdownTextArea placeholder="Answer" onMdChange={setAnswer} />
       </div>
 
       <Spacer />
-      <Button variant="contained" color="primary" onClick={submitCard}>
+      <Button type="primary" onClick={submitCard}>
         Submit
       </Button>
     </div>
