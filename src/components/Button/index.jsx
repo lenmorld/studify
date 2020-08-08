@@ -15,13 +15,14 @@ const baseStyles = {
  * 
  */
 
-function Button({ type, onClick, style, size, children }) {
+function Button({ type, onClick, style, size, icon, children }) {
 	// debugger
 	return <ButtonUI
 		type={type}
 		onClick={onClick}
 		style={{ ...baseStyles, ...style }}
 		size={size}
+		icon={icon}
 	>
 		{children}
 	</ButtonUI>
