@@ -32,10 +32,11 @@ const Header = ({ renderQuestionForm }) => {
     >
       <h1 style={styles.h1}>Studify</h1>
       <Button
+        icon={<PlusCircleOutlined />}
         type="primary"
         onClick={renderQuestionForm}
       >
-        <PlusCircleOutlined /><span>New Question</span>
+        New Question
       </Button>
     </header>
   );

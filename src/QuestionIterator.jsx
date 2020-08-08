@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+import { EyeOutlined } from '@ant-design/icons';
+
 import Button from '../src/components/Button'
 import FlashCard from "./FlashCard";
 import Summary from './Summary';
 
 import api from './utils/api'
 import randomizer from './utils/randomizer'
+import RightWrong from "./RightWrong";
 
 const styles = {
   // TOP HALF
@@ -72,10 +75,13 @@ function getNext(current, max) {
 
 const QuestionIterator = ({ }) => {
   // TODO: cache, lazy-loading, pagination
+  // TODO: move state up, or put in a context
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [answerVisible, toggleAnswerVisible] = useState(false);
+
+  const [userScore, setUserScore] = useState(0)
 
   useEffect(() => {
     api.doRequest('/cards').then(res => {
@@ -83,7 +89,7 @@ const QuestionIterator = ({ }) => {
 
       let questions = res.data;
       // debugging Summary
-      questions = [questions[0]]
+      questions = [questions[0], questions[1]]
 
       // randomize order
       const randomizedSet = randomizer(questions)
@@ -108,8 +114,18 @@ const QuestionIterator = ({ }) => {
 
   const currentCard = questions[currentIndex];
 
+  const updateScore = (isCorrect) => {
+    if (isCorrect) {
+      setUserScore((prevScore) => prevScore + 1)
+    }
+    nextQuestion()
+  }
+
   return (
     <React.Fragment>
+      <h3>
+        {userScore}
+      </h3>
       <div style={styles.questionContainer}>
         <FlashCard key={currentCard.id} card={currentCard} answerVisible={answerVisible} toggleAnswerVisible={toggleAnswerVisible} />
       </div>
@@ -123,19 +139,14 @@ const QuestionIterator = ({ }) => {
             onClick={toggleAnswerVisible}
             size="large"
             style={styles.button}
+            icon={<EyeOutlined />}
           >
             Reveal
       </Button>
         }
         {
           answerVisible &&
-          <Button
-            type="primary"
-            onClick={nextQuestion}
-            style={styles.button}
-          >
-            Next
-        </Button>
+          <RightWrong onSelect={updateScore} />
         }
       </div>
     </React.Fragment>
