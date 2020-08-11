@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { EyeOutlined } from '@ant-design/icons';
-
-import Button from '../src/components/Button'
 import FlashCard from "./FlashCard";
 import Summary from './Summary';
 
 import api from './utils/api'
 import randomizer from './utils/randomizer'
-import RightWrong from "./RightWrong";
+import Controls from "./Controls";
 
 const styles = {
   // TOP HALF
@@ -28,7 +25,7 @@ const styles = {
   },
 
   // BOTTOM HALF
-  buttonContainer: {
+  buttonsContainer: {
     flexBasis: "20%",
     width: "100%",
 
@@ -37,28 +34,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center"
   },
-  button: {
-    // fontSize: "1rem",
-    // padding: "0.5rem 1rem",
-    marginTop: "1rem"
-  }
 }
-
-/**
- * 
- * TODO: navigation logic
- * 1. next gets Random
- * 2. if visited, don't visit again
- * 
- * e.g.
- * 
- * [0, 1, 2, 3, 4, 5]
- * 
- * something like
- * 3 -> 0 -> 5 -> 1 -> 2 -> 4
- * 
- * no number should repeat in a "round"
- */
 
 function getNext(current, max) {
   let nextIndex = current + 1;
@@ -89,7 +65,7 @@ const QuestionIterator = ({ }) => {
 
       let questions = res.data;
       // debugging Summary
-      questions = [questions[0], questions[1]]
+      // questions = [questions[0], questions[1]]
 
       // randomize order
       const randomizedSet = randomizer(questions)
@@ -131,23 +107,9 @@ const QuestionIterator = ({ }) => {
       </div>
       {/* TODO: combine two buttons with different states */}
       <div
-        style={styles.buttonContainer}
+        style={styles.buttonsContainer}
       >
-        {
-          !answerVisible && <Button
-            type="primary"
-            onClick={toggleAnswerVisible}
-            size="large"
-            style={styles.button}
-            icon={<EyeOutlined />}
-          >
-            Reveal
-      </Button>
-        }
-        {
-          answerVisible &&
-          <RightWrong onSelect={updateScore} />
-        }
+        <Controls answerVisible={answerVisible} toggleAnswerVisible={toggleAnswerVisible} updateScore={updateScore} />
       </div>
     </React.Fragment>
   );
