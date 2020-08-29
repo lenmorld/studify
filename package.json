@@ -5,13 +5,14 @@
   "description": "",
   "main": "server.js",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
+    "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.1.0",
     "babel-preset-env": "^1.7.0",
+    "cssnano": "^4.1.10",
     "eslint": "^7.6.0",
     "eslint-plugin-react": "^7.20.5",
     "webpack": "^4.41.5",
@@ -19,8 +20,8 @@
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "build": "parcel build public/index.html",
-    "ui": "parcel public/index.html --port 5000",
+    "build": "parcel build parcel/index.html -d public/",
+    "ui": "parcel parcel/index.html --port 5000",
     "deploy": "surge dist/ studify.surge.sh"
   },
   "keywords": [
