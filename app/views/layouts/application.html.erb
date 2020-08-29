@@ -12,12 +12,20 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <%#  TODO: match index.html css %>
 
-    <link rel="stylesheet" href="./dist/styles.css" />
+    <%# <link rel="stylesheet" href="./dist/styles.css" /> %>
   </head>
 
   <body>
+    <%# When using the regular flow (route -> controller -> views), %>
+    <%# THIS ERB ACTS AS A LAYOUT WRAPPER TO THE VIEWS RENDERED BY THE CONTROLLERS %>
+    <%# UNLESS public/index.html is defined which overrides all the views %>
+    
+    <%# <<<<< application.html.erb START >>>> %>
+    
     <div id="portal"></div>
     <%= yield %>
+
+    <%# <<<< application.html.erb END >>>>> %>
   </body>
 </html>
 
