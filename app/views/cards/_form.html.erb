@@ -1,0 +1,47 @@
+
+<%= form_with model: @card, local: true do |form| %>
+ 
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@card.errors.count, "error") %> prohibited
+        this card from being saved:
+      </h2>
+      <ul>
+        <% @card.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :question %><br>
+    <%= form.text_field :question %>
+  </p>
+
+   <p>
+    <%= form.label :answer_type %><br>
+    <%= form.text_field :answer_type %>
+  </p>
+
+  <p>
+    <%= form.label :options %><br>
+    <%= form.text_field :options %>
+  </p>
+
+  <p>
+    <%= form.label :answers %><br>
+    <%= form.text_field :answers %>
+  </p>
+ 
+  <p>
+    <%= form.label :answer_notes %><br>
+    <%= form.text_area :answer_notes %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
