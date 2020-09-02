@@ -12,17 +12,24 @@
 
 ActiveRecord::Schema.define(version: 2019_12_29_220158) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cards", force: :cascade do |t|
     t.text "question"
-    t.text "answer"
+    t.integer "answer_type", default: 0
+    t.jsonb "options"
+    t.jsonb "answers"
+    t.text "answer_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["answer_type"], name: "index_cards_on_answer_type"
   end
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
-    t.integer "lesson_id"
+    t.bigint "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lesson_id"], name: "index_comments_on_lesson_id"
@@ -35,4 +42,5 @@ ActiveRecord::Schema.define(version: 2019_12_29_220158) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "lessons"
 end

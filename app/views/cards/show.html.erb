@@ -1,0 +1,33 @@
+<p>
+    <strong>Question:</strong>
+    <%= @card.question %>
+</p>
+
+<p>
+    <strong>Answers:</strong>
+    <%= @card.answers %>
+</p>
+
+<p>
+    <strong>Answer type:</strong>
+    <%= @card.answer_type %>
+</p>
+
+<p>
+    <strong>Options:</strong>
+    <%= @card.options %>
+</p>
+
+<p>
+    <strong>Answers notes:</strong>
+    <%= @card.answer_notes %>
+</p>
+
+<%# <h2>Comments</h2> %>
+<%# <%= render @card.comments %>
+
+<%# <h2>Add a comment:</h2> %>
+<%# <%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_card_path(@card) %>
+<%= link_to 'Back', cards_path %>

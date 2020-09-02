@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 // import config file
-const config = require('../config');
+import config from '../config'
+
+console.log(config)
 
 const SERVER_URI = config.server_uri;
 
