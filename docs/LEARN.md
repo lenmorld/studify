@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 end
 ```
 
-`welcome#index`
+`root welcome#index`
 tells Rails to map the app root requests, to the welcome controller's index action
 
 `welcome/index` 
