@@ -9,10 +9,35 @@
 cards = Card.create([
     {
         question: "What is resource routing?",
-        answer: "Resource routing allows you to declare all common routes for a give resourceful controller"
+        answers: { answers: [ { text: "Resource routing allows you to declare all common routes for a give resourceful controller" } ] }.to_json
     },
     {
         question: "What common routes are included when doing resouce routing?",
-        answer: "index, show, new, edit, create"
+        # options: {},
+        answers: { answers: [ { text: "index, show, new, edit, create"}] }.to_json
+    },
+    {
+        answer_type: "multiple",
+        question: "Which is the right letter?",
+        options:  {options: [
+            {
+                id: 1,
+                description: "A",
+            },
+            {
+                id: 2,
+                description: "B",
+            },
+            ]
+        }.to_json,
+        answers: {
+            "answers": [1]
+        }.to_json
+    },
+    {
+        answer_type: "true_false",
+        question: "Is it true?",
+        answers: { answers: [ { bool: true } ] }.to_json,
+        answer_notes: "well, you're right :) emoji test - 👩‍🚀🤩",
     }
 ])

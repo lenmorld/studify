@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  # allow JSON and HTML views for cards
+  # HTML is for "CRUD admin view"
+  resources :cards
+
   root 'welcome#index'
 end
