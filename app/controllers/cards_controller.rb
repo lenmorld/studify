@@ -27,7 +27,7 @@ class CardsController < ApplicationController
   def edit
     @card = Card.find(params[:id])
   end
-  
+
   def show
     @card = Card.find(params[:id])
   end
