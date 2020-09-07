@@ -5,7 +5,8 @@ import Button from '../src/components/Button'
 
 import MarkdownTextArea from "./MarkdownTextArea";
 import Spacer from "./Spacer";
-import TagInput from "./TagInput";
+// import TagInput from "./TagInput";
+import Tags from "./Tags"
 
 import api from './utils/api'
 
@@ -48,8 +49,9 @@ const FlashCardForm = ({ onHide }) => {
       {/* TODO set defaultValue from DB */}
 
       {/* AFTER MVP */}
-      {/* <h2>Category</h2> */}
+      <h2>Category</h2>
       {/* <TagInput defaultValue={null} /> */}
+      <Tags savedSelectedTags={[]} />
       {/* <Spacer /> */}
 
       <h3>Question</h3>
