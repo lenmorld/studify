@@ -1,0 +1,10 @@
+<main>
+    <div id="app"></div>
+    <script src="dist/bundle.js"></script>
+</main>
+<footer>
+    <%#  
+        <h1>Welcome#index</h1>
+        <p>Find me in app/views/welcome/index.html.erb</p>
+        <%= link_to 'Lessons', controller: 'lessons' %>
+</footer>
