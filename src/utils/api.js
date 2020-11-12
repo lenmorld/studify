@@ -15,7 +15,6 @@ function doRequest(resourcePath, method = 'GET', data = null) {
 		url: SERVER_URI + resourcePath,
 		headers: {
 			"Content-Type": "application/json",
-			// "Authorization": `Bearer ${access_token}`,
 			"Accept": "application/json"
 		}
 	}

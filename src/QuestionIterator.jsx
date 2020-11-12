@@ -45,18 +45,18 @@ const styles = {
 }
 
 /**
- * 
+ *
  * TODO: navigation logic
  * 1. next gets Random
  * 2. if visited, don't visit again
- * 
+ *
  * e.g.
- * 
+ *
  * [0, 1, 2, 3, 4, 5]
- * 
+ *
  * something like
  * 3 -> 0 -> 5 -> 1 -> 2 -> 4
- * 
+ *
  * no number should repeat in a "round"
  */
 
@@ -71,7 +71,7 @@ function getNext(current, max) {
     return nextIndex;
   }
   // return nextIndex > max ? 0 : nextIndex;
-};
+}
 
 const QuestionIterator = ({ }) => {
   // TODO: cache, lazy-loading, pagination
@@ -85,18 +85,20 @@ const QuestionIterator = ({ }) => {
 
   useEffect(() => {
     api.doRequest('/cards').then(res => {
-      console.log("questions from API", res.data)
+	  console.log("questions from API", res.data)
+
+	  console.log(JSON.stringify(res.data))
 
       let questions = res.data;
       // debugging Summary
-      questions = [questions[0], questions[1]]
+    //   questions = [questions[0], questions[1]]
 
       // randomize order
       const randomizedSet = randomizer(questions)
       setQuestions(randomizedSet);
     });
   }, []);
-  // NOTE: dont forget [] or it is an infinite fetch!
+  // fetch on mount and unmount
 
   if (!questions.length) {
     return <div>Loading...</div>;
