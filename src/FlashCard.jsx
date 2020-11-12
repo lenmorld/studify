@@ -11,6 +11,21 @@ const styles = {
   }
 }
 
+const formatAnswerBasedOntype = (answerType, answers, options) => {
+	const parsedAnswers = JSON.parse(answers);
+
+	if (answerType === 'open') {
+		return parsedAnswers[0]['text']
+	} else if (answerType === 'multiple') {
+		const parsedOptions = JSON.parse(options);
+		return parsedAnswers.map(ans => parsedOptions[ans]).join("<br/>")
+	} else if (answerType === 'true_false') {
+		return parsedAnswers[0].toString()
+	} else {
+		// ERROR???
+	}
+}
+
 const FlashCard = ({ card, answerVisible, toggleAnswerVisible }) => {
   // const classes = useStyles();
   return (
@@ -19,7 +34,7 @@ const FlashCard = ({ card, answerVisible, toggleAnswerVisible }) => {
       </div>
       {
         answerVisible &&
-        <div style={styles.answer} dangerouslySetInnerHTML={{ __html: markdown.render(card.answer) }}></div>
+        <div style={styles.answer} dangerouslySetInnerHTML={{ __html: markdown.render(formatAnswerBasedOntype(card.answer_type, card.answers, card.options)) }}></div>
       }
 
     </React.Fragment>
