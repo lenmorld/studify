@@ -22,6 +22,21 @@ $ bin/rails db:seed
 $ bin/rails server
 ```
 
+## Start DB
+
+https://stackoverflow.com/questions/7975556/how-can-i-start-postgresql-server-on-mac-os-x
+
+Start manually
+```
+pg_ctl -D /usr/local/var/postgres start
+```
+
+Stop manually
+
+```
+pg_ctl -D /usr/local/var/postgres stop
+```
+
 # UI
 
 ## Start UI server
