@@ -9,13 +9,13 @@ const baseStyles = {
 
 /**
  * material-ui
- * 
+ *
  * 		variant="contained"
 		color={type}
- * 
+ *
  */
 
-function Button({ type, onClick, style, size, icon, children }) {
+function Button({ type, onClick, style, size, icon, children, ...props }) {
 	// debugger
 	return <ButtonUI
 		type={type}
@@ -23,6 +23,7 @@ function Button({ type, onClick, style, size, icon, children }) {
 		style={{ ...baseStyles, ...style }}
 		size={size}
 		icon={icon}
+		{...props}
 	>
 		{children}
 	</ButtonUI>
