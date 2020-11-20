@@ -43,3 +43,29 @@ nav ul {
 nav ul li {
   /* margin-left: 1rem; */
 }
+
+/** custom styles to override ant **/
+
+button.green {
+  background-color: green;
+  border-color: green;
+}
+
+button.green:hover {
+  background-color: #00ff00;
+}
+
+button.red {
+  background-color: #be013c;
+  border-color: #be013c;
+}
+
+button.red:hover {
+  background-color: #ff073a;
+}
+
+
+/** markdown overrides **/
+pre {
+  text-align: left;
+}

@@ -10,11 +10,14 @@ class Card < ApplicationRecord
       private
 
       def validate_json(record, field)
+        # byebug
+
         begin
             puts ">>>>>", field, record[field]
-            JSON.parse(record[field])
-        rescue JSON::ParserError => e
-            record.errors[field] << "not a valid JSON" 
+            JSON.parse(record[field].to_json)
+        rescue => e
+            puts "ERROR", e
+            record.errors[field] << "not a valid JSON"
         end
       end
     end
@@ -22,6 +25,5 @@ class Card < ApplicationRecord
     # validations
     include ActiveModel::Validations
     validates_with JsonbValidator
-
 
 end

@@ -1,12 +1,8 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import React from "react"
 
 // import { Button } from "@material-ui/core";
-import Button from '../src/components/Button'
-
-import {
-  PlusCircleOutlined
-} from '@ant-design/icons';
+import { PlusCircleOutlined } from "@ant-design/icons"
+import Button from "./components/Button"
 
 const styles = {
   header: {
@@ -20,16 +16,14 @@ const styles = {
   },
   // TODO: put this in a stylesheet in relation to app.less
   h1: {
-    marginBottom: '0',
-    color: '#350367'
-  }
+    marginBottom: "0",
+    color: "#350367",
+  },
 }
 
 const Header = ({ renderQuestionForm }) => {
   return (
-    <header
-      style={styles.header}
-    >
+    <header style={styles.header}>
       <h1 style={styles.h1}>Studify</h1>
       <Button
         icon={<PlusCircleOutlined />}
@@ -39,7 +33,7 @@ const Header = ({ renderQuestionForm }) => {
         New Question
       </Button>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
