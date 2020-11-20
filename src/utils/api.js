@@ -1,32 +1,31 @@
-import axios from 'axios'
+import axios from "axios"
 
 // import config file
-import config from '../config'
+import config from "../config"
 
-console.log(config)
+// console.log(config)
 
-const SERVER_URI = config.server_uri;
+const SERVER_URI = config.server_uri
 
-function doRequest(resourcePath, method = 'GET', data = null) {
-	// return axios.get(`${SERVER_URI}/${resourcePath}`)
+async function doRequest(resourcePath, method = "GET", data = null) {
+  // return axios.get(`${SERVER_URI}/${resourcePath}`)
 
-	const request = {
-		method: method,
-		url: SERVER_URI + resourcePath,
-		headers: {
-			"Content-Type": "application/json",
-			"Accept": "application/json"
-		}
-	}
+  const request = {
+    method,
+    url: SERVER_URI + resourcePath,
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    data,
+  }
 
-	if (data) {
-		request.data = data
-	}
+  const result = await axios(request)
 
-	return axios(request);
+//   debugger
+  return result.data
 }
 
 export default {
-	doRequest
+  doRequest,
 }
-
