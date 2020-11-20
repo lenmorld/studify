@@ -1,7 +1,7 @@
-import React, { createContext, createElement } from "react";
-import ReactDOM from "react-dom";
+import React, { createContext, createElement } from "react"
+import ReactDOM from "react-dom"
 
-const themeContext = createContext();
+const themeContext = createContext()
 
 // /**
 //  * usage:
@@ -12,7 +12,7 @@ const themeContext = createContext();
 
 const SomeContextProvider = ({ children, theme = "LIGHT" }) => (
   <themeContext.Provider>{children}</themeContext.Provider>
-);
+)
 
 /*
 const Modal = ({ component, props = {} }) => {
@@ -31,7 +31,7 @@ const styles = {
     width: "100%",
     height: "100%",
     backgroundColor: "white",
-    opacity: "0.8"
+    opacity: "0.8",
     // alignment
     // display: "flex",
     // justifyContent: "center",
@@ -46,27 +46,27 @@ const styles = {
     display: "flex",
 
     minHeight: "75%",
-    width: "75%"
+    width: "75%",
   },
 
   content: {
     // flexBasis: "50%",
 
-    border: "1px solid gray",
+    border: "1px solid lightgray",
     // height: "100%",
     // width: "100%"
     flex: 1, // consume free space on the main axis, instead of 100%
 
     display: "flex",
-    flexDirection: "column"
-  }
-};
+    flexDirection: "column",
+  },
+}
 
 // TODO: improve composition via HoC or render-props?
 
 const Backdrop = ({ onHide }) => {
-  return <div style={styles.backdrop} onClick={onHide}></div>;
-};
+  return <div style={styles.backdrop} onClick={onHide} />
+}
 
 const Content = ({ children }) => {
   // {/* component on center */}
@@ -74,8 +74,8 @@ const Content = ({ children }) => {
     <div style={styles.container}>
       <div style={styles.content}>{children}</div>
     </div>
-  );
-};
+  )
+}
 
 // TODO: make work with createElement
 
@@ -86,9 +86,9 @@ const Modal = ({ children, onHide }) => {
       <Backdrop onHide={onHide}>{children}</Backdrop>
       <Content>{children}</Content>
     </SomeContextProvider>,
-    document.querySelector("#portal")
-  );
-};
+    document.querySelector("#portal"),
+  )
+}
 
 // const Modal = ({ Component, props = {} }) => {
 //   return ReactDOM.createPortal(
@@ -101,4 +101,4 @@ const Modal = ({ children, onHide }) => {
 //   );
 // };
 
-export default Modal;
+export default Modal
